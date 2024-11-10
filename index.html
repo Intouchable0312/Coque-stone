@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coque stone island by Nathan</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            overflow: hidden;
+        }
+
+        h1 {
+            position: absolute;
+            top: 20px;
+            font-size: 2rem;
+            text-align: center;
+            width: 100%;
+            color: #ecf0f1;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel img {
+            width: 100%;
+            max-height: 90vh;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+            z-index: 10; /* Assurez-vous que les flèches sont au-dessus des images */
+        }
+
+        .arrow:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .arrow.left {
+            left: 10px;
+        }
+
+        .arrow.right {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Coque Stone Island</h1>
+    <div class="carousel-container">
+        <button class="arrow left" onclick="scrollCarousel(-1)">&#8592;</button>
+        <div class="carousel">
+            <img src="images/violet1.jpg" alt="Violet 1">
+            <img src="images/vert1.jpg" alt="Vert 1">
+            <img src="images/noir1.jpg" alt="Noir 1">
+            <img src="images/bleu1.jpg" alt="Bleu 1">
+            <img src="images/rose1.jpg" alt="Rose 1">
+            <img src="images/violet2.jpg" alt="Violet 2">
+            <img src="images/vert2.jpg" alt="Vert 2">
+            <img src="images/noir2.jpg" alt="Noir 2">
+            <img src="images/rose2.jpg" alt="Rose 2">
+            <img src="images/bleu2.jpg" alt="Bleu 2">
+            <img src="images/blanc2.jpg" alt="Blanc 2">
+        </div>
+        <button class="arrow right" onclick="scrollCarousel(1)">&#8594;</button>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+
+        function scrollCarousel(direction) {
+            const carousel = document.querySelector('.carousel');
+            const images = document.querySelectorAll('.carousel img');
+            const totalImages = images.length;
+            const imageWidth = images[0].clientWidth;
+
+            currentIndex += direction;
+
+            if (currentIndex < 0) {
+                currentIndex = totalImages - 1;
+            } else if (currentIndex >= totalImages) {
+                currentIndex = 0;
+            }
+
+            carousel.style.transform = `translateX(${-currentIndex * imageWidth}px)`;
+        }
+    </script>
+</body>
+</html>
